@@ -1,5 +1,5 @@
 #require "spec"
-require "../src/hathor_contract"
+require "../src/hathor-contract"
 require "microtest"
 
 include Microtest::DSL

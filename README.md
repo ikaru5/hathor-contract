@@ -12,15 +12,15 @@ Inspired by Ruby [Trailblazer](http://trailblazer.to) Reform.
 - [Instance API](#instance-api)
 - [Macros](#macros)
     - [field](#field)
-        - [field!](#field!)
+        - [field!](#field-1)
     - [collection](#collection)
-        - [collection!](#collection!)
+        - [collection!](#collection-1)
     - [nested](#nested)
-        - [nested!](#nested!)
+        - [nested!](#nested-1)
     - [nested_contract](#nested_contract)
-        - [nested_contract!](#nested_contract!)
+        - [nested_contract!](#nested_contract-1)
     - [nested_collection](#nested_collection)
-        - [nested_collection!](#nested_collection!)
+        - [nested_collection!](#nested_collection-1)
     - [validates](#validates)
     - [validate](#validate)
     - [register_validation](#register_validation)
@@ -37,7 +37,9 @@ Inspired by Ruby [Trailblazer](http://trailblazer.to) Reform.
 
 If you are coming from from the Ruby and Rails world, you probably heard or used Trailblazer. 
 It adds an additional abstraction level to encapsulate your business code from the framework and adds a nice 
-syntactic sugar. Especially on Crystal you have a wider range of ongoing ORMs, so this kind of abstraction makes sense.
+syntactic sugar. 
+
+Especially on Crystal we have a wider range of ongoing ORMs, so taking your validation dependancies out makes sense.
 
 Hathor Contracts are a tiny hybrid between Contracts and Representer. 
 They aim to parse incoming JSON or Hashes/NamedTuples to Instances, 
@@ -45,7 +47,7 @@ validate the data and also render the assigned data again.
 
 ## Hathor Operations
 
-If you are looking for Trailblazer-like Operations, you may also have a look at [Hathor Operations](https://github.com/ikaru5/hathor-operationss).
+If you are looking for Trailblazer-like Operations, you may also have a look at [Hathor Operations](https://github.com/ikaru5/hathor-operation).
 The shards are decoupled and have no dependencies to each other.
 
 ## Installation
@@ -112,12 +114,15 @@ Its a tiny lib for syntactic sugar in big and small projects.
 ## Class API
 
 ```crystal
+# from_json
 # uses JSON.parse(json_string); decorate option will translate camelcase to crystals underscore syntax
 Hathor::Contract.from_json(json_string : String, decorate : Bool = true) 
 
+# from_hash
 # used also for from_json; decorate option will translate camelcase to crystals underscore syntax
 Hathor::Contract.from_hash(hash, decorate_json_style : Bool = false) 
 
+# new
 # simply create a new empty contract
 Hathor::Contract.new
 ```
@@ -125,17 +130,21 @@ Hathor::Contract.new
 ## Instance API
 
 ```crystal
+# to_json
 # returns JSON string; decorate option to get camelcase, instead of underscore
 contract.to_json(decorate : Bool = true) 
 
+# to_hash
 # returns NamedTuple, decorate_json_style options used by to json
 contract.to_hash(decorate_json_style : Bool = false) 
 
+# valid? and validate!
 # run validations and return boolean 
 contract.valid? # recommended if you want the boolean
 # or 
 contract.validate! # returns boolean now, but may change in future
 
+# errors
 # get the errors
 contract.errors
 contract.errors["street"] # => ["not_present"]
@@ -154,7 +163,7 @@ All macros expands to a simple [property](https://crystal-lang.org/api/0.20.1/Cl
 
 ### field
 
-This is straight forward. A simple property of deinfed type and Nil.
+This is straight forward. A simple property of defined type and Nil.
 
 ```crystal
 # macro field(type_declaration, **options)
@@ -418,7 +427,7 @@ class Address < Hathor::Contract
 ## Contributors and Contact
 
 If you have ideas on how to develop hathor more or what features it is missing, I would love to hear about it.
-You can always contact me on [gitter](https://gitter.im/amberframework/amber) @ikaru5.
+You can always contact me on [gitter](https://gitter.im/amberframework/amber) @ikaru5 or E-Mail.
 
 - [@ikaru5](https://github.com/ikaru5) Kirill Kulikov - creator, maintainer
 
