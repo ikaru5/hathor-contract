@@ -14,31 +14,32 @@ module Hathor
         name = nested_name.id
         PROPERTIES[name] = options || {} of Nil => Nil
         PROPERTIES[name][:type] = :nested
-        PROPERTIES[name][:nested_class] = "#{@type.id}::#{name.camelcase}"
+        nested_class = "::#{@type.id}::#{name.camelcase}"
+        PROPERTIES[name][:nested_class] = nested_class
         PROPERTIES[name][:nilable] = options[:nilable].is_a?(BoolLiteral) ? options[:nilable] : true
       %}
       # create new nested class
-      class {{PROPERTIES[name][:nested_class].id}} < Hathor::Contract # todo: base class
-        {{ yield }}
+      class {{nested_class.id}} < Hathor::Contract # todo: base class
+        {{ yield.id }}
       end
 
       # create property of nested class type
       {% if PROPERTIES[name][:nilable] %}
-        property {{name}} : ({{@type.id}}::{{name.camelcase}} | Nil)
+        property {{name}} : ({{nested_class.id}} | Nil)
 
         # define a "new_name_of_field" helper method
         def new_{{name}}
-          self.{{name}} = {{@type.id}}::{{name.camelcase}}.new
+          self.{{name}} = {{nested_class.id}}.new
         end
       {% else %}
-        property {{name}} : {{@type.id}}::{{name.camelcase}} = {{PROPERTIES[name][:nested_class].id}}.new
+        property {{name}} : {{nested_class.id}} = {{nested_class.id}}.new
       {% end %}
     end
 
     # shortcut for "nilable: false" option
     macro nested!(name, **options)
       nested({{name}}, nilable: false, {{**options}}) do
-        {{ yield }}
+        {{ yield.id }}
       end
     end
 

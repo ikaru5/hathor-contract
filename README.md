@@ -232,7 +232,9 @@ nested nested_collection_name of: AnotherContract
 ```
 
 **NOTE** If nilable, it will define a method `new_nested_collection_name` to create an empty array with correct data type.
-**NOTE** It will also define a method `populate_nested_collection_name` populate the array with new data if array is present.
+
+**NOTE** It will always define a method `populate_nested_collection_name`. 
+It populates the array with new empty entry of if array is present.
 
 #### nested_collection!
 

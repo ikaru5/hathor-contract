@@ -13,7 +13,7 @@ module Hathor
         # register name and type in contract class config
         PROPERTIES[name] = options || {} of Nil => Nil
         PROPERTIES[name][:type] = :array_of_contracts
-        inner_class = options[:of] || "#{@type.id}::#{name.camelcase}"
+        inner_class = options[:of] || "::#{@type.id}::#{name.camelcase}"
         PROPERTIES[name][:inner_type] = inner_class
         PROPERTIES[name][:nilable] = options[:nilable].is_a?(BoolLiteral) ? options[:nilable] : true
       %}
@@ -21,7 +21,7 @@ module Hathor
       # create new nested class
       {% if has_block %}
         class {{inner_class.id}} < Hathor::Contract # todo base class
-          {{ yield }}
+          {{ yield.id }}
         end
       {% end %}
 
@@ -45,8 +45,14 @@ module Hathor
     end
 
     # shortcut for "nilable: false" option
-    macro nested_collection!(name, **options)
-      nested_collection({{name}}, nilable: false, {{**options}})
+    macro nested_collection!(name, **options, &block)
+      {% if yield.id != "" %}
+        nested_collection({{name}}, nilable: false, {{**options}}) do
+          {{ yield.id }}
+        end
+      {% else %}
+        nested_collection({{name}}, nilable: false, {{**options}})
+      {% end %}
     end
 
   end
