@@ -4,6 +4,8 @@ Class based data storage with validations and parsing/rendering from and to JSON
 
 Inspired by Ruby [Trailblazer](http://trailblazer.to) Reform.
 
+Current supported crystal version: **0.34.0**
+
 - [About](#about)
 - [Hathor Operations](#hathor-operations)
 - [Installation](#installation)
@@ -222,13 +224,13 @@ You may define a block for an inline contract or use the `of:`-option to define 
 
 ```crystal
 # macro nested_collection(name, **options, &block)
-nested nested_collection_name do
+nested_collection nested_collection_name do
   # in fact this creates an inline Contract and a field with an Array of the type of this contract 
   # so use everthing from macros
 end
 
 # or 
-nested nested_collection_name of: AnotherContract
+nested_collection nested_collection_name of: AnotherContract
 ```
 
 **NOTE** If nilable, it will define a method `new_nested_collection_name` to create an empty array with correct data type.
@@ -238,7 +240,9 @@ It populates the array with new empty entry of if array is present.
 
 #### nested_collection!
 
-Shortcut to *nilable: **false***: `nested_collection something, nilable: false do ...`
+Shortcut to *nilable: **false***: 
+
+`nested_collection some_nested_collection_name, nilable: false do ...`
 
 #### validates
 

@@ -117,7 +117,7 @@ describe TestContractFromJson do
     assert 1407 == second_address.plz
     assert "Berlin" == second_address.city
     # compare without whitespaces
-    assert "{\"email\":\"k.kulikov94@gmail.com\",\"username\":\"Ikarus\",\"password\":\"#pass\",\"passwordRepeat\":\"#pass\",\"agb\":true,\"addressOne\":{\"street\":\"somestreet\",\"streetNumber\":123,\"plz\":1123,\"city\":\"Dresden\"},\"addressTwo\":{\"street\":\"foostreet\",\"streetNumber\":123,\"plz\":1234,\"city\":\"Chemnitz\"},\"names\":[\"Lisa\",\"Susan\",\"Peter\"],\"addresses\":[{\"street\":\"barstreet\",\"street_number\":321,\"plz\":123456,\"city\":\"Leipzig\"},{\"street\":\"foobarstreet\",\"street_number\":222,\"plz\":1407,\"city\":\"Berlin\"}]}" ==
+    assert "{\"email\":\"k.kulikov94@gmail.com\",\"username\":\"Ikarus\",\"password\":\"#pass\",\"passwordRepeat\":\"#pass\",\"agb\":true,\"addressOne\":{\"street\":\"somestreet\",\"streetNumber\":123,\"plz\":1123,\"city\":\"Dresden\"},\"addressTwo\":{\"street\":\"foostreet\",\"streetNumber\":123,\"plz\":1234,\"city\":\"Chemnitz\"},\"names\":[\"Lisa\",\"Susan\",\"Peter\"],\"addresses\":[{\"street\":\"barstreet\",\"streetNumber\":321,\"plz\":123456,\"city\":\"Leipzig\"},{\"street\":\"foobarstreet\",\"streetNumber\":222,\"plz\":1407,\"city\":\"Berlin\"}]}" ==
         contract.to_json(decorate: true).gsub(/[\s\n]*/, "")
   end
 

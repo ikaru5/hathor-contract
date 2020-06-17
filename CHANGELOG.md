@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.1.2
+
+- fix json_decorated option for nested collection
+- fix typo in README
+
 ### 0.1.1
 
 - fix namesapce issues with nested and nested_collection generated classes

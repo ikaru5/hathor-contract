@@ -147,7 +147,7 @@ module Hathor
               %}
             {% elsif [:array_of_contracts].includes? options[:type] %}
               {%
-                formatted_value = "#{field_name.id}.nil? ? nil : #{field_name.id}.not_nil!.map(&.to_hash)"
+                formatted_value = "#{field_name.id}.nil? ? nil : #{field_name.id}.not_nil!.map(&.to_hash(decorate_json_style: decorate_json_style))"
               %}
             {% elsif options[:json_string] && "String" == options[:type].id %}
               {%
