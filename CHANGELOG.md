@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.1.3
+
+- bump up crystal version to 0.35.1
+
 ### 0.1.2
 
 - fix json_decorated option for nested collection
