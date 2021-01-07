@@ -436,6 +436,7 @@ If you have ideas on how to develop hathor more or what features it is missing, 
 You can always contact me on [gitter](https://gitter.im/amberframework/amber) @ikaru5 or E-Mail.
 
 - [@ikaru5](https://github.com/ikaru5) Kirill Kulikov - creator, maintainer
+- [@richardboehme](https://github.com/richardboehme) Richard Böhme - maintainer
 
 ## Copyright
 
