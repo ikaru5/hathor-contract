@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.1.4
+
+- fix parsing of empty JSON::Any fields
+- bump up crystal version to 1.3.2
+
 ### 0.1.3
 
 - bump up crystal version to 0.35.1

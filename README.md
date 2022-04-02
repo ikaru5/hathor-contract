@@ -4,7 +4,7 @@ Class based data storage with validations and parsing/rendering from and to JSON
 
 Inspired by Ruby [Trailblazer](http://trailblazer.to) Reform.
 
-Last tested crystal version: **0.35.1**
+Last tested crystal version: **1.3.2**
 
 - [About](#about)
 - [Hathor Operations](#hathor-operations)

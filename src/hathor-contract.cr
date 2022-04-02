@@ -118,7 +118,7 @@ module Hathor
                 if value.is_a?({{options[:type].id}})
                   instance.{{field_name.id}} = value
                 elsif value.is_a?(JSON::Any)
-                  instance.{{field_name.id}} = value.{{translate[options[:type].id].id}}
+                  instance.{{field_name.id}} = value.{{translate[options[:type].id].id}} unless value.raw.nil?
                 else
                   puts "TODO: remove me after log finished: log_invalid_type {{field_name.id}}"
                   log_invalid_type("{{field_name.id}}", value.class.to_s, "field")

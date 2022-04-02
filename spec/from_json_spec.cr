@@ -48,6 +48,19 @@ describe TestContractFromJson do
         contract.to_json(decorate: false).gsub(/[\s\n]*/, "")
   end
 
+  class MiniAddress < Hathor::Contract
+    field street : String
+    field number : Int32
+  end
+
+  test "it must parse json nil values" do
+    json = "{ \"street\": null, \"number\": null }"
+    contract = MiniAddress.from_hash JSON.parse(json).as_h
+    # now check the values
+    assert contract.street.nil?
+    assert contract.number.nil?
+  end
+
   test "it must parse json and assign values accordingly without decorate" do
     json = File.read "./spec/files/contract_json.json"
     contract = TestContract.from_json json, decorate: false
